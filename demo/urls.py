@@ -22,15 +22,19 @@ urlpatterns = [
 ]
 """
 from django.urls import path 
-from django.contrib.auth.models import User
-from viewflow.contrib.auth import AuthViewset 
+#from django.contrib.auth.models import User
 from viewflow.urls import Application, Site, ModelViewset
+from viewflow.workflow.flow.viewset import FlowAppViewset
+from viewflow.contrib.auth import AuthViewset 
+#from viewflow.urls import Application, Site, ModelViewset
+from helloworld.flows import HelloWorldFlow
 
 
 site = Site(title="ACME Corp", viewsets=[
     Application(
         title='Sample App', icon='people', app_name='sample', viewsets=[
-            ModelViewset(model=User),
+            #ModelViewset(model=User),
+            FlowAppViewset(HelloWorldFlow,icon="assignment"),
         ]
     ),
 ])
